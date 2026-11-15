@@ -1,0 +1,231 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Fabio Pereira de Melo — Blogs</title>
+  <meta name="description" content="Three blogs by Fabio Pereira de Melo: engineering, fatherhood, and everything else.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%231f1d1a'/><text x='16' y='22' font-family='Georgia,serif' font-size='18' text-anchor='middle' fill='%23f6f3ee'>F</text></svg>">
+  <style>
+    :root {
+      --bg: #f6f3ee;
+      --surface: #fffdf9;
+      --text: #1f1d1a;
+      --muted: #6b665e;
+      --line: #e4ded4;
+      --eng: #2f6fdb;
+      --dad: #d2672f;
+      --rnd: #7a4fc4;
+      --shadow: 0 1px 2px rgba(31, 29, 26, .04), 0 8px 24px rgba(31, 29, 26, .06);
+    }
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --bg: #151412;
+        --surface: #1d1c19;
+        --text: #f1ede6;
+        --muted: #a39d93;
+        --line: #2e2c28;
+        --eng: #6c9bf0;
+        --dad: #ec8c58;
+        --rnd: #a988e3;
+        --shadow: 0 1px 2px rgba(0, 0, 0, .3), 0 8px 24px rgba(0, 0, 0, .25);
+      }
+    }
+
+    * { box-sizing: border-box; }
+    html, body { margin: 0; }
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font: 400 16px/1.6 Inter, system-ui, -apple-system, sans-serif;
+      -webkit-font-smoothing: antialiased;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    main {
+      width: 100%;
+      max-width: 720px;
+      margin: 0 auto;
+      padding: clamp(56px, 12vh, 120px) 20px 48px;
+      flex: 1;
+    }
+
+    header { margin-bottom: 48px; }
+    .eyebrow {
+      font-size: 13px;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin: 0 0 12px;
+    }
+    h1 {
+      font-family: Fraunces, Georgia, serif;
+      font-weight: 600;
+      font-size: clamp(40px, 7vw, 56px);
+      line-height: 1.05;
+      letter-spacing: -.02em;
+      margin: 0 0 16px;
+    }
+    .intro {
+      font-size: 18px;
+      color: var(--muted);
+      margin: 0;
+      max-width: 34em;
+    }
+
+    .blogs {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: grid;
+      gap: 14px;
+    }
+    .blog {
+      --accent: var(--eng);
+      position: relative;
+      display: grid;
+      grid-template-columns: 48px 1fr auto;
+      align-items: center;
+      gap: 18px;
+      padding: 22px 22px 22px 20px;
+      background: var(--surface);
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      box-shadow: var(--shadow);
+      color: inherit;
+      text-decoration: none;
+      overflow: hidden;
+      transition: transform .2s ease, border-color .2s ease;
+    }
+    .blog::before {
+      content: "";
+      position: absolute;
+      inset: 0 auto 0 0;
+      width: 4px;
+      background: var(--accent);
+      transform: scaleY(0);
+      transform-origin: center;
+      transition: transform .25s ease;
+    }
+    .blog:hover, .blog:focus-visible {
+      transform: translateY(-2px);
+      border-color: color-mix(in srgb, var(--accent) 40%, var(--line));
+      outline: none;
+    }
+    .blog:hover::before, .blog:focus-visible::before { transform: scaleY(1); }
+    .blog.dad { --accent: var(--dad); }
+    .blog.rnd { --accent: var(--rnd); }
+
+    .icon {
+      width: 48px;
+      height: 48px;
+      border-radius: 12px;
+      display: grid;
+      place-items: center;
+      color: var(--accent);
+      background: color-mix(in srgb, var(--accent) 12%, transparent);
+    }
+    .icon svg { width: 24px; height: 24px; }
+
+    .blog h2 {
+      font-family: Fraunces, Georgia, serif;
+      font-weight: 600;
+      font-size: 22px;
+      line-height: 1.2;
+      margin: 0 0 4px;
+    }
+    .blog p { margin: 0; color: var(--muted); font-size: 15px; }
+    .domain {
+      display: block;
+      margin-top: 6px;
+      font-size: 13px;
+      color: var(--accent);
+    }
+
+    .arrow {
+      color: var(--muted);
+      transition: transform .2s ease, color .2s ease;
+    }
+    .blog:hover .arrow, .blog:focus-visible .arrow {
+      transform: translateX(4px);
+      color: var(--accent);
+    }
+
+    footer {
+      text-align: center;
+      padding: 24px 20px 40px;
+      font-size: 13px;
+      color: var(--muted);
+    }
+
+    @media (max-width: 480px) {
+      .blog { grid-template-columns: 40px 1fr; gap: 14px; padding: 18px 16px; }
+      .icon { width: 40px; height: 40px; border-radius: 10px; }
+      .icon svg { width: 20px; height: 20px; }
+      .arrow { display: none; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      * { transition: none !important; }
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <header>
+      <p class="eyebrow">Fabio Pereira de Melo</p>
+      <h1>Three blogs,<br>one person.</h1>
+      <p class="intro">I write about building software, raising kids, and whatever else is on my mind. Pick a door.</p>
+    </header>
+
+    <ul class="blogs">
+      <li>
+        <a class="blog eng" href="https://engineering.fabiopereira.name">
+          <span class="icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+          </span>
+          <div>
+            <h2>Engineering</h2>
+            <p>Notes on software, systems and the craft of building things.</p>
+            <span class="domain">engineering.fabiopereira.name</span>
+          </div>
+          <svg class="arrow" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+        </a>
+      </li>
+      <li>
+        <a class="blog dad" href="https://fatherhood.fabiopereira.name">
+          <span class="icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.7l-1-1.1a5.5 5.5 0 0 0-7.8 7.8l1 1.1L12 21l7.8-7.5 1-1.1a5.5 5.5 0 0 0 0-7.8z"/></svg>
+          </span>
+          <div>
+            <h2>Fatherhood</h2>
+            <p>Stories and lessons from being a dad.</p>
+            <span class="domain">fatherhood.fabiopereira.name</span>
+          </div>
+          <svg class="arrow" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+        </a>
+      </li>
+      <li>
+        <a class="blog rnd" href="https://random.fabiopereira.name">
+          <span class="icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="3"/><circle cx="8.5" cy="8.5" r="1.2" fill="currentColor"/><circle cx="15.5" cy="15.5" r="1.2" fill="currentColor"/><circle cx="12" cy="12" r="1.2" fill="currentColor"/></svg>
+          </span>
+          <div>
+            <h2>Random</h2>
+            <p>Everything that doesn't fit anywhere else.</p>
+            <span class="domain">random.fabiopereira.name</span>
+          </div>
+          <svg class="arrow" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+        </a>
+      </li>
+    </ul>
+  </main>
+
+  <footer>© <span id="y">2026</span> Fabio Pereira de Melo</footer>
+  <script>document.getElementById('y').textContent = new Date().getFullYear();</script>
+</body>
+</html>
