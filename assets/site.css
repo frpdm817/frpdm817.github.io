@@ -172,6 +172,9 @@ footer {
   letter-spacing: .04em;
 }
 .lang a {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
   color: var(--muted);
   text-decoration: none;
   padding: 4px 8px;
@@ -181,3 +184,4 @@ footer {
 .lang a:hover, .lang a:focus-visible { color: var(--text); background: var(--line); outline: none; }
 .lang a[aria-current="page"] { color: var(--text); background: var(--surface); box-shadow: inset 0 0 0 1px var(--line); }
 
+.lang .flag { font-size: 15px; line-height: 1; }
