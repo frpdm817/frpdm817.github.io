@@ -184,4 +184,4 @@ footer {
 .lang a:hover, .lang a:focus-visible { color: var(--text); background: var(--line); outline: none; }
 .lang a[aria-current="page"] { color: var(--text); background: var(--surface); box-shadow: inset 0 0 0 1px var(--line); }
 
-.lang .flag { font-size: 15px; line-height: 1; }
+.lang .flag { display: block; width: 18px; height: 12px; border-radius: 2px; box-shadow: 0 0 0 1px rgba(0, 0, 0, .12); }

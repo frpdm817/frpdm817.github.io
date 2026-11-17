@@ -8,6 +8,8 @@
     if (LANGS.indexOf(lang) === -1) return;
     var host = location.hostname;
     var onSite = host === ROOT || host.slice(-(ROOT.length + 1)) === '.' + ROOT;
+    // Drop any stale host-only copy so it can't shadow the shared one.
+    if (onSite) document.cookie = 'lang=; Path=/; Max-Age=0';
     document.cookie = 'lang=' + lang + '; Path=/; Max-Age=31536000; SameSite=Lax' +
       (onSite ? '; Domain=' + ROOT + '; Secure' : '');
   }
