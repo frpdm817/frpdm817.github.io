@@ -12,10 +12,14 @@
       (onSite ? '; Domain=' + ROOT + '; Secure' : '');
   }
 
-  document.addEventListener('click', function (e) {
+  function onClick(e) {
+    if (e.type === 'auxclick' && e.button !== 1) return; // middle-click only, not right-click
     var a = e.target.closest && e.target.closest('a');
     if (!a) return;
     if (a.closest('.lang')) setLang(a.getAttribute('hreflang'));
     else if (a.classList.contains('blog')) setLang(document.documentElement.lang);
-  });
+  }
+  // auxclick covers middle-click / open-in-new-tab
+  document.addEventListener('click', onClick);
+  document.addEventListener('auxclick', onClick);
 })();
