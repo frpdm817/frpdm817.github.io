@@ -185,3 +185,34 @@ footer {
 .lang a[aria-current="page"] { color: var(--text); background: var(--surface); box-shadow: inset 0 0 0 1px var(--line); }
 
 .lang .flag { display: block; width: 18px; height: 12px; border-radius: 2px; box-shadow: 0 0 0 1px rgba(0, 0, 0, .12); }
+
+.about {
+  margin-top: 56px;
+  padding-top: 32px;
+  border-top: 1px solid var(--line);
+}
+.about h2 {
+  font-family: Fraunces, Georgia, serif;
+  font-weight: 600;
+  font-size: 22px;
+  line-height: 1.2;
+  margin: 0 0 10px;
+}
+.about p { margin: 0 0 18px; color: var(--muted); max-width: 34em; }
+.linkedin {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 14px;
+  border-radius: 10px;
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--text);
+  background: var(--surface);
+  border: 1px solid var(--line);
+  text-decoration: none;
+  transition: border-color .2s ease, color .2s ease;
+}
+.linkedin svg { color: #0a66c2; }
+.linkedin:hover, .linkedin:focus-visible { border-color: #0a66c2; outline: none; }
+@media (prefers-color-scheme: dark) { .linkedin svg { color: #4c9be8; } }
